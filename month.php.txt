@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Month Name Display</title>
+</head>
+<body>
+    <h2>Enter a Month Number</h2>
+    <form method="post">
+        <label for="month">Month Number (1-12):</label>
+        <input type="number" id="month" name="month" min="1" max="12" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $monthNumber = intval($_POST['month']);
+        $months = [
+            1 => "January",
+            2 => "February",
+            3 => "March",
+            4 => "April",
+            5 => "May",
+            6 => "June",
+            7 => "July",
+            8 => "August",
+            9 => "September",
+            10 => "October",
+            11 => "November",
+            12 => "December"
+        ];
+
+        if ($monthNumber >= 1 && $monthNumber <= 12) {
+            echo "<p>The month name for number $monthNumber is <strong>{$months[$monthNumber]}</strong>.</p>";
+        } else {
+            echo "<p>Please enter a valid month number between 1 and 12.</p>";
+        }
+    }
+    ?>
+</body>
+</html>
