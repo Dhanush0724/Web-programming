@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Javascript Program to Grow and Shrink Text</title>
+<style>
+body {
+    background-color: #CCFFCC;
+    color: green;
+    margin: 30px;
+    font-family: Arial, sans-serif;
+}
+</style>
+<script type="text/javascript">
+var anim = setInterval(grow, 100);
+var fs = 5;
+
+function grow() {
+    fs += 5;
+    var textElement = document.getElementById("animText");
+    textElement.innerHTML = "TEXT-GROWING";
+    textElement.style.color = "red";
+    textElement.style.fontSize = fs + "pt";
+    if (fs > 50) {
+        clearInterval(anim);
+        anim = setInterval(shrink, 100);
+    }
+}
+
+function shrink() {
+    fs -= 5;
+    var textElement = document.getElementById("animText");
+    textElement.innerHTML = "TEXT-SHRINKING";
+    textElement.style.color = "blue";
+    textElement.style.fontSize = fs + "pt";
+    if (fs < 5) {
+        clearInterval(anim);
+        anim = setInterval(grow, 100);
+    }
+}
+</script>
+</head>
+<body>
+<p>
+<span id="animText"></span>
+</p>
+</body>
+</html>
